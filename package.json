@@ -1,0 +1,72 @@
+{
+  "name": "electron-react-vite-tailwind-template",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Template for creating desktop apps with React(TS) + Vite + Electron + Tailwind CSS. Includes a pre-configured development and build setup.",
+  "author": "Eric Jared Villeda Reyes",
+  "license": "MIT",
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "concurrently -k \"vite\" \"wait-on http://localhost:6969/login && electron .\"",
+    "build": "tsc -b && vite build",
+    "dist": "npm run build && electron-builder",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "clean": "rimraf dist releases",
+    "package": "npm run clean && npm run build && npm run dist"
+  },
+  "build": {
+    "appId": "electron-react-vite",
+    "productName": "templateRVET",
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "files": [
+      "dist/**/*",
+      "electron/main.cjs",
+      "node_modules/**/*",
+      "public/typira.ico",
+      "package.json"
+    ],
+    "nsis": {
+      "uninstallDisplayName": "Uninstall this app",
+      "license": "license.txt",
+      "oneClick": "false",
+      "allowToChangeInstallationDirectory": "true"
+    },
+    "directories": {
+      "output": "releases",
+      "buildResources": "dist"
+    }
+  },
+  "dependencies": {
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "react-router-dom": "7.9.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.36.0",
+    "@types/node": "24.6.0",
+    "@types/react": "19.1.16",
+    "@types/react-dom": "19.1.9",
+    "@vitejs/plugin-react": "5.0.4",
+    "autoprefixer": "^10.4.21",
+    "concurrently": "9.2.1",
+    "electron": "39.0.0",
+    "electron-builder": "26.0.12",
+    "eslint": "9.36.0",
+    "eslint-plugin-react-hooks": "5.2.0",
+    "eslint-plugin-react-refresh": "0.4.22",
+    "globals": "16.4.0",
+    "postcss": "8.5.6",
+    "tailwindcss": "3.4.18",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "8.45.0",
+    "vite": "7.1.12",
+    "wait-on": "9.0.1"
+  },
+  "keywords": []
+}
