@@ -20,7 +20,12 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    /* 👇 VERY IMPORTANT */
+    "typeRoots": ["./src/types", "./node_modules/@types"]
   },
-  "include": ["vite.config.ts"]
+
+  /* 👇 Add electron code and custom types */
+  "include": ["vite.config.ts", "electron/**/*", "src/types/**/*"]
 }
